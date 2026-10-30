@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import PlaceholderMedia from "@/components/ui/PlaceholderMedia";
+import CoverImage from "@/components/ui/CoverImage";
 import { formatDate } from "@/lib/format";
 
 export default function NewsCard({ article, featured = false }) {
@@ -19,7 +19,20 @@ export default function NewsCard({ article, featured = false }) {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="h-full w-full"
           >
-            <PlaceholderMedia tone="forest" className="h-full w-full" />
+            {article.image ? (
+              <CoverImage
+                src={article.image}
+                alt={article.imageAlt || article.title}
+                className="h-full w-full"
+                sizes={featured ? "(max-width: 1024px) 100vw, 50vw" : "(max-width: 768px) 100vw, 33vw"}
+              />
+            ) : (
+              <div className="flex h-full w-full items-end bg-forest-deep p-5">
+                <span className="text-[11px] uppercase tracking-[0.18em] text-gold-soft">
+                  {article.category}
+                </span>
+              </div>
+            )}
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
           <span className="absolute left-4 top-4 rounded-full bg-paper/90 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-ink">

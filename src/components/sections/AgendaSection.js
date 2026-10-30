@@ -10,7 +10,7 @@ export default function AgendaSection() {
         <SectionHeading
           eyebrow="Priorities"
           title="The Legislative Agenda"
-          description="Six priority areas shaping the legislative direction of the House."
+          description="Eight priorities of the 10th House, adopted in November 2023 as The People’s House. Photographs are of the Speaker at official duties."
           tone="light"
         />
 

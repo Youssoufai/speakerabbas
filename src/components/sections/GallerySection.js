@@ -12,7 +12,7 @@ export default function GallerySection() {
           <SectionHeading
             eyebrow="Visual Record"
             title="Gallery"
-            description="A visual record of national assembly proceedings, official engagements and constituency work."
+            description="Photographs published by the Office of the Speaker. Each caption states what the picture shows. Constituency sites are described in words, because matching photographs were not in this archive."
           />
           <Reveal>
             <Button href="/gallery" variant="ghost" className="!px-0 text-ink">

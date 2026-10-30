@@ -15,7 +15,7 @@ export default function GalleryPage() {
         <SectionHeading
           eyebrow="Visual Record"
           title="Gallery"
-          description="National Assembly proceedings, official engagements, constituency visits, international relations and public events."
+          description="Photographs published by the Office of the Speaker, with captions limited to what the picture and the Office’s own account support."
         />
         <div className="mt-16">
           <GalleryGrid items={gallery} />

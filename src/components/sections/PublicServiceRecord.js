@@ -9,7 +9,7 @@ export default function PublicServiceRecord() {
         <SectionHeading
           eyebrow="Accountability"
           title="Public Service Record"
-          description="A transparent, factual overview of parliamentary and public service activity."
+          description="The representative mandate, the doctorate and the national honour, as published by the National Assembly and the Office of the Speaker."
         />
 
         <div className="mt-16 grid gap-px overflow-hidden rounded-none bg-line md:grid-cols-4">

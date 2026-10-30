@@ -2,15 +2,14 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUp, Camera, Globe2, MessageCircle, Video } from "lucide-react";
-import { site, footerLinks } from "@/data/site";
+import { ArrowUp, Camera, Globe2, MessageCircle } from "lucide-react";
+import { site, footerLinks, contactLines } from "@/data/site";
 
 const socialIcons = [
-  { icon: MessageCircle, href: site.social.twitter, label: "Twitter / X" },
+  { icon: MessageCircle, href: site.social.twitter, label: "X" },
   { icon: Globe2, href: site.social.facebook, label: "Facebook" },
   { icon: Camera, href: site.social.instagram, label: "Instagram" },
-  { icon: Video, href: site.social.youtube, label: "YouTube" },
-];
+].filter((item) => item.href);
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -68,10 +67,18 @@ export default function Footer() {
             <p className="mb-5 text-[12px] uppercase tracking-[0.2em] text-paper/40">
               Office
             </p>
-            <ul className="space-y-3 text-[14px] text-paper/70">
-              <li>{site.address}</li>
-              <li>{site.email}</li>
-              <li>{site.phone}</li>
+            <ul className="space-y-3 text-[14px] leading-relaxed text-paper/70">
+              {contactLines.map((line) => (
+                <li key={`${line.label}-${line.value}`}>
+                  {line.href ? (
+                    <a href={line.href} className="transition-colors hover:text-gold-soft">
+                      {line.value}
+                    </a>
+                  ) : (
+                    line.value
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
         </div>

@@ -2,8 +2,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import ProjectCard from "@/components/cards/ProjectCard";
 import Button from "@/components/ui/Button";
-import PlaceholderMedia from "@/components/ui/PlaceholderMedia";
-import { projects } from "@/data/projects";
+import { projects, constituencyNote } from "@/data/projects";
 
 export default function ConstituencySection() {
   return (
@@ -13,17 +12,21 @@ export default function ConstituencySection() {
           <SectionHeading
             eyebrow="On the Ground"
             title="Serving the Constituency"
-            description="Development, community engagement and empowerment initiatives at the constituency level."
+            description="Zaria Federal Constituency, Kaduna State, which he has represented since 2011. Each project is labelled with the status given in the public record."
           />
           <Reveal
             variant="right"
-            className="h-56 w-full overflow-hidden md:h-64"
+            className="flex h-56 w-full flex-col justify-end bg-forest-deep p-6 text-paper md:h-64"
           >
-            <PlaceholderMedia
-              tone="charcoal"
-              label="Constituency Map Placeholder"
-              className="h-full w-full"
-            />
+            <p className="text-[12px] uppercase tracking-[0.2em] text-gold-soft">
+              Kaduna State
+            </p>
+            <p className="mt-2 font-display text-3xl leading-tight tracking-tight">
+              Zaria Federal Constituency
+            </p>
+            <p className="mt-2 text-[13px] leading-relaxed text-paper/70">
+              Member of the House since 2011. Fourth term, 2023–2027.
+            </p>
           </Reveal>
         </div>
 
@@ -34,6 +37,10 @@ export default function ConstituencySection() {
             </Reveal>
           ))}
         </div>
+
+        <p className="mt-12 max-w-3xl text-[14px] leading-relaxed text-ink-soft/70">
+          {constituencyNote}
+        </p>
 
         <Reveal className="mt-14">
           <Button href="/constituency" variant="outline" className="text-ink">

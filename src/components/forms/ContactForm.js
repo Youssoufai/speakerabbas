@@ -5,14 +5,25 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
-import { site } from "@/data/site";
+import { contactLines } from "@/data/site";
+
+const icons = {
+  Abuja: MapPin,
+  Zaria: MapPin,
+  Email: Mail,
+  Telephone: Phone,
+};
 
 export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [opened, setOpened] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    const data = new FormData(e.currentTarget);
+    const subject = String(data.get("subject") || "");
+    const body = `From: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`;
+    window.location.href = `mailto:tajudeenabbas@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setOpened(true);
   };
 
   return (
@@ -20,61 +31,81 @@ export default function ContactForm() {
       <div>
         <Reveal>
           <h2 className="font-display text-3xl tracking-tight text-ink">
-            Get in Touch
+            Published contacts
           </h2>
         </Reveal>
+        <p className="mt-4 max-w-md text-[14px] leading-relaxed text-ink-soft/70">
+          These are the addresses and numbers published by the National
+          Assembly. This website does not operate a separate mailbox.
+        </p>
         <div className="mt-10 space-y-6">
-          {[
-            { icon: MapPin, text: site.address },
-            { icon: Mail, text: site.email },
-            { icon: Phone, text: site.phone },
-          ].map(({ icon: Icon, text }, i) => (
-            <Reveal key={text} delay={i * 0.06} className="flex items-start gap-4">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line text-forest">
-                <Icon className="h-4 w-4" strokeWidth={1.5} />
-              </span>
-              <p className="pt-2 text-[15px] text-ink-soft/80">{text}</p>
-            </Reveal>
-          ))}
+          {contactLines.map((line, i) => {
+            const Icon = icons[line.label] || Mail;
+            return (
+              <Reveal key={`${line.label}-${line.value}`} delay={i * 0.05} className="flex items-start gap-4">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line text-forest">
+                  <Icon className="h-4 w-4" strokeWidth={1.5} />
+                </span>
+                <div className="pt-1">
+                  <p className="text-[12px] uppercase tracking-[0.14em] text-ink-soft/50">
+                    {line.label}
+                  </p>
+                  {line.href ? (
+                    <a href={line.href} className="mt-1 block text-[15px] text-ink hover:text-forest">
+                      {line.value}
+                    </a>
+                  ) : (
+                    <p className="mt-1 text-[15px] text-ink-soft/80">{line.value}</p>
+                  )}
+                  {line.note ? (
+                    <p className="mt-1 text-[13px] text-ink-soft/55">{line.note}</p>
+                  ) : null}
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
 
       <Reveal variant="right">
-        {submitted ? (
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="border border-line bg-paper-dim p-10 text-center"
-          >
-            <p className="font-display text-xl text-ink">Thank you.</p>
-            <p className="mt-3 text-[14px] text-ink-soft/70">
-              Your message has been received by the Office of the Speaker.
-            </p>
-          </motion.div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <Field label="Full Name" id="name" />
-            <Field label="Email Address" id="email" type="email" />
-            <Field label="Subject" id="subject" />
-            <div>
-              <label
-                htmlFor="message"
-                className="text-[12px] uppercase tracking-[0.14em] text-ink-soft/60"
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
-                required
-                rows={5}
-                className="mt-2 w-full border-b border-line bg-transparent py-2 text-[15px] text-ink outline-none transition-colors focus:border-forest"
-              />
-            </div>
-            <Button type="submit" variant="primary">
-              Send Message
-            </Button>
-          </form>
-        )}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <Field label="Full Name" id="name" />
+          <Field label="Email Address" id="email" type="email" />
+          <Field label="Subject" id="subject" />
+          <div>
+            <label
+              htmlFor="message"
+              className="text-[12px] uppercase tracking-[0.14em] text-ink-soft/60"
+            >
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows={5}
+              className="mt-2 w-full border-b border-line bg-transparent py-2 text-[15px] text-ink outline-none transition-colors focus:border-forest"
+            />
+          </div>
+          <Button type="submit" variant="primary">
+            Open in email
+          </Button>
+          <p className="text-[13px] leading-relaxed text-ink-soft/60">
+            The button opens your email application, addressed to
+            tajudeenabbas@yahoo.com, the address on the National Assembly
+            member profile. Nothing is stored on this website.
+          </p>
+          {opened ? (
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-[14px] text-forest"
+            >
+              If your email application did not open, use one of the addresses
+              listed here.
+            </motion.p>
+          ) : null}
+        </form>
       </Reveal>
     </div>
   );
@@ -91,6 +122,7 @@ function Field({ label, id, type = "text" }) {
       </label>
       <input
         id={id}
+        name={id}
         type={type}
         required
         className="mt-2 w-full border-b border-line bg-transparent py-2 text-[15px] text-ink outline-none transition-colors focus:border-forest"

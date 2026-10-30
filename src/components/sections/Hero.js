@@ -6,7 +6,7 @@ import { ArrowDown } from "lucide-react";
 import { site } from "@/data/site";
 import AnimatedText from "@/components/ui/AnimatedText";
 import Button from "@/components/ui/Button";
-import PlaceholderMedia from "@/components/ui/PlaceholderMedia";
+import CoverImage from "@/components/ui/CoverImage";
 
 export default function Hero() {
   return (
@@ -17,10 +17,13 @@ export default function Hero() {
         transition={{ duration: 2.2, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0"
       >
-        <PlaceholderMedia
-          tone="forest"
-          label="Official Portrait Placeholder — Rt. Hon. Tajudeen Abbas"
+        <CoverImage
+          src="/images/speaker/chamber.jpg"
+          alt="Rt. Hon. Abbas Tajudeen at the dais of the House of Representatives."
+          imageClassName="object-cover object-[68%_40%]"
           className="h-full w-full"
+          priority
+          sizes="100vw"
         />
       </motion.div>
 
@@ -43,7 +46,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-6 text-[13px] font-medium uppercase tracking-[0.28em] text-gold-soft"
         >
-          Rt. Hon. Tajudeen Abbas
+          {site.name}
         </motion.p>
 
         <AnimatedText
@@ -59,7 +62,8 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.85 }}
           className="mt-8 max-w-xl text-balance text-[17px] leading-relaxed text-paper/75 md:text-[19px]"
         >
-          {site.fullTitle}.
+          Speaker of the 10th House since 13 June 2023, and member for Zaria
+          Federal Constituency, Kaduna State, since 2011.
         </motion.p>
 
         <motion.div

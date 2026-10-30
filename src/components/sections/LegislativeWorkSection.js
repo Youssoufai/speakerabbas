@@ -3,7 +3,11 @@ import Reveal from "@/components/ui/Reveal";
 import StatCounter from "@/components/ui/StatCounter";
 import LegislativeCard from "@/components/cards/LegislativeCard";
 import Button from "@/components/ui/Button";
-import { legislativeStats, legislativeInitiatives } from "@/data/legislative";
+import {
+  legislativeStats,
+  legislativeInitiatives,
+  legislativeNote,
+} from "@/data/legislative";
 
 export default function LegislativeWorkSection() {
   return (
@@ -12,7 +16,7 @@ export default function LegislativeWorkSection() {
         <SectionHeading
           eyebrow="By the Numbers"
           title="Legislative Work"
-          description="An overview of legislative activity under the current Assembly. Figures are placeholders pending verified data."
+          description="His record as a member of the 8th and 9th Houses, and the vote that made him Speaker. House-wide totals are explained underneath and are not added to these figures."
         />
 
         <div className="mt-16 grid grid-cols-2 gap-8 border-y border-line py-12 md:grid-cols-4">
@@ -26,6 +30,10 @@ export default function LegislativeWorkSection() {
             </Reveal>
           ))}
         </div>
+
+        <p className="mt-8 max-w-3xl text-[14px] leading-relaxed text-ink-soft/70">
+          {legislativeNote}
+        </p>
 
         <div className="mt-16">
           {legislativeInitiatives.map((item) => (

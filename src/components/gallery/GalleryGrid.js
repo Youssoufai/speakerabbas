@@ -3,8 +3,14 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import PlaceholderMedia from "@/components/ui/PlaceholderMedia";
+import CoverImage from "@/components/ui/CoverImage";
 import { formatDate } from "@/lib/format";
+
+function itemDate(item) {
+  if (item.dateLabel) return item.dateLabel;
+  if (item.date) return formatDate(item.date);
+  return "";
+}
 
 export default function GalleryGrid({ items }) {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -35,16 +41,19 @@ export default function GalleryGrid({ items }) {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className={i % 3 === 0 ? "h-[420px]" : "h-[300px]"}
             >
-              <PlaceholderMedia tone="forest" className="h-full w-full" />
+              <CoverImage
+                src={item.image}
+                alt={item.alt || item.caption}
+                className="h-full w-full"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
             </motion.div>
             <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             <div className="absolute bottom-0 left-0 translate-y-2 p-5 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
               <p className="text-[11px] uppercase tracking-[0.14em] text-gold-soft">
                 {item.category}
               </p>
-              <p className="mt-1 text-[13px] text-paper/80">
-                {formatDate(item.date)}
-              </p>
+              <p className="mt-1 text-[13px] text-paper/80">{itemDate(item)}</p>
             </div>
           </motion.button>
         ))}
@@ -88,15 +97,23 @@ export default function GalleryGrid({ items }) {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="h-[70vh] w-full max-w-4xl"
+              className="w-full max-w-4xl"
             >
-              <PlaceholderMedia
-                tone="charcoal"
-                label={items[activeIndex].caption}
-                className="h-full w-full"
+              <CoverImage
+                src={items[activeIndex].image}
+                alt={items[activeIndex].alt || items[activeIndex].caption}
+                imageClassName="object-contain"
+                className="h-[62vh] w-full bg-ink"
+                sizes="90vw"
               />
-              <p className="mt-4 text-center text-[13px] uppercase tracking-[0.14em] text-paper/60">
-                {items[activeIndex].category} — {formatDate(items[activeIndex].date)}
+              <p className="mx-auto mt-4 max-w-2xl text-center text-[14px] leading-relaxed text-paper/80">
+                {items[activeIndex].caption}
+              </p>
+              <p className="mt-2 text-center text-[12px] uppercase tracking-[0.14em] text-paper/50">
+                {items[activeIndex].category}
+                {itemDate(items[activeIndex])
+                  ? ` — ${itemDate(items[activeIndex])}`
+                  : ""}
               </p>
             </motion.div>
           </motion.div>

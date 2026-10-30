@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import PlaceholderMedia from "@/components/ui/PlaceholderMedia";
+import CoverImage from "@/components/ui/CoverImage";
 
 export default function AgendaCard({ item }) {
   return (
@@ -16,7 +16,17 @@ export default function AgendaCard({ item }) {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0"
       >
-        <PlaceholderMedia tone="charcoal" className="h-full w-full" />
+        {item.image ? (
+          <CoverImage
+            src={item.image}
+            alt={item.imageAlt || item.title}
+            imageClassName={item.imageClassName || "object-cover object-center"}
+            className="h-full w-full"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        ) : (
+          <div className="h-full w-full bg-forest-deep" />
+        )}
       </motion.div>
 
       <motion.div

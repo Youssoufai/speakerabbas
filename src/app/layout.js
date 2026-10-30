@@ -27,6 +27,7 @@ export const metadata = {
   },
   description: site.description,
   keywords: [
+    "Abbas Tajudeen",
     "Tajudeen Abbas",
     "Speaker of the House of Representatives",
     "Nigeria National Assembly",

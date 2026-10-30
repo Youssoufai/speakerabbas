@@ -1,51 +1,85 @@
-// Legislative agenda priority areas — placeholder descriptions.
+// The eight priorities in the Legislative Agenda of the 10th House,
+// unveiled in November 2023 as “The People’s House”.
+// Photographs are of the Speaker at work. They illustrate the office,
+// not a literal scene of each policy area.
 export const agendaItems = [
   {
-    id: "economic-development",
+    id: "good-governance",
     index: "01",
-    title: "Economic Development",
+    title: "Strengthening Good Governance",
     description:
-      "Advancing legislation that strengthens Nigeria's economic resilience, growth and competitiveness.",
-    image: "/images/agenda/economic-development.jpg",
+      "Rule of law, human rights, anti-corruption, oversight, and a more effective National Assembly, including closer work with the Executive.",
+    image: "/images/speaker/efcc-group.jpg",
+    imageAlt:
+      "Rt. Hon. Abbas Tajudeen with Governor Charles Soludo, EFCC Chairman Ola Olukoyede and Hon. Paschal Agbodike at the commissioning of the EFCC Awka Zonal Directorate on 2 October 2026.",
   },
   {
-    id: "education",
+    id: "national-security",
     index: "02",
-    title: "Education",
+    title: "Improving National Security",
     description:
-      "Supporting policy and funding frameworks that expand access to quality education nationwide.",
-    image: "/images/agenda/education.jpg",
+      "Accountability in the security sector, counter-terrorism, intelligence sharing, police reform, and the security of the National Assembly.",
+    image: "/images/speaker/presiding.jpg",
+    imageAlt:
+      "Rt. Hon. Abbas Tajudeen speaking from the Chair of the House of Representatives.",
   },
   {
-    id: "healthcare",
+    id: "law-reform",
     index: "03",
-    title: "Healthcare",
+    title: "Law Reform",
     description:
-      "Championing legislative reform that improves healthcare access, delivery and outcomes.",
-    image: "/images/agenda/healthcare.jpg",
+      "Constitutional review, local government reform, a shorter Exclusive Legislative List, judicial reform, and electoral reform.",
+    image: "/images/speaker/address.jpg",
+    imageAlt:
+      "Rt. Hon. Abbas Tajudeen addressing the House from the presiding officer’s seat.",
   },
   {
-    id: "youth-human-capital",
+    id: "economic-growth",
     index: "04",
-    title: "Youth & Human Capital",
+    title: "Economic Growth and Development",
     description:
-      "Investing in the development, skills and inclusion of Nigeria's young population.",
-    image: "/images/agenda/youth.jpg",
+      "Legislation on economic restructuring, diversification and agriculture, in support of jobs, productivity and public investment.",
+    image: "/images/speaker/office.jpg",
+    imageAlt:
+      "Rt. Hon. Abbas Tajudeen at his desk in the National Assembly.",
   },
   {
-    id: "security",
+    id: "social-sector",
     index: "05",
-    title: "Security",
+    title: "Social Sector Reform",
     description:
-      "Strengthening the legislative framework that safeguards lives, livelihoods and national stability.",
-    image: "/images/agenda/security.jpg",
+      "Education, including basic, technical and Almajiri education; healthcare; energy, roads, rail, ports and aviation; and pension reform.",
+    image: "/images/speaker/chamber.jpg",
+    imageAlt:
+      "Rt. Hon. Abbas Tajudeen seated at the dais of the House of Representatives.",
   },
   {
-    id: "institutional-reform",
+    id: "inclusion",
     index: "06",
-    title: "Institutional Reform",
+    title: "Inclusion and Open Parliament",
     description:
-      "Modernising the institution of the House to improve transparency, efficiency and public trust.",
-    image: "/images/agenda/institutional-reform.jpg",
+      "Women’s representation, youth development, citizen engagement, and the inclusion of displaced persons and persons with disabilities.",
+    image: "/images/speaker/city-boy.jpg",
+    imageAlt:
+      "Rt. Hon. Abbas Tajudeen with visitors during a courtesy call in Abuja on 21 October 2026.",
+  },
+  {
+    id: "foreign-policy",
+    index: "07",
+    title: "Nigeria’s Foreign Policy",
+    description:
+      "Using the House’s treaties, oversight and diplomacy to support Nigeria’s external policy.",
+    image: "/images/speaker/saudi-greeting.jpg",
+    imageAlt:
+      "Rt. Hon. Abbas Tajudeen greeting a Saudi guest at a reception. Photograph published by the Office of the Speaker in September 2026.",
+  },
+  {
+    id: "climate",
+    index: "08",
+    title: "Climate and the Environment",
+    description:
+      "Legislation and oversight on climate change and environmental sustainability, including the energy transition.",
+    image: null,
+    imageAlt: "",
   },
 ];

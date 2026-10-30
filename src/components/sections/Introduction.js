@@ -1,6 +1,6 @@
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
-import PlaceholderMedia from "@/components/ui/PlaceholderMedia";
+import CoverImage from "@/components/ui/CoverImage";
 
 export default function Introduction() {
   return (
@@ -15,16 +15,23 @@ export default function Introduction() {
           </Reveal>
           <Reveal delay={0.05}>
             <p className="text-balance font-display text-[clamp(2rem,4vw,3.2rem)] italic leading-[1.15] tracking-tight text-ink">
-              &ldquo;A legislature that works for the people.&rdquo;
+              &ldquo;As custodians of the legislative process, we must
+              approach these tasks with resolve and an acute awareness of
+              their implications for Nigeria&rsquo;s development
+              trajectory.&rdquo;
             </p>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-8 max-w-lg text-[15px] leading-relaxed text-ink-soft/80">
-              Placeholder introduction — a short message from the Speaker
-              will be provided here once verified content is supplied by the
-              Office of the Speaker. This section is designed to hold an
-              authentic reflection on the role and responsibility of the
-              House of Representatives to the Nigerian people.
+              Rt. Hon. Abbas Tajudeen, PhD, GCON, has represented Zaria
+              Federal Constituency since 2011 and has presided over the
+              House since 13 June 2023. Before parliament he was a teacher,
+              a lecturer at Kaduna State University, and a sponsor of more
+              bills than any other member of the 9th House.
+            </p>
+            <p className="mt-4 max-w-lg text-[13px] leading-relaxed text-ink-soft/55">
+              The quotation is published on the Office of the Speaker&rsquo;s
+              biography.
             </p>
           </Reveal>
           <Reveal delay={0.22} className="mt-10">
@@ -35,10 +42,12 @@ export default function Introduction() {
         </div>
 
         <Reveal variant="scale" delay={0.1} className="h-[420px] md:h-[560px]">
-          <PlaceholderMedia
-            tone="paper"
-            label="National Assembly / Speaker Portrait Placeholder"
+          <CoverImage
+            src="/images/speaker/portrait.jpg"
+            alt="Official portrait of Rt. Hon. Abbas Tajudeen, Speaker of the House of Representatives."
+            imageClassName="object-cover object-top"
             className="h-full w-full"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </Reveal>
       </div>

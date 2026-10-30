@@ -2,7 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import PlaceholderMedia from "@/components/ui/PlaceholderMedia";
+import PageBanner from "@/components/ui/PageBanner";
+import ArticleBody from "@/components/content/ArticleBody";
 import { news } from "@/data/news";
 import { formatDate } from "@/lib/format";
 
@@ -27,22 +28,15 @@ export default async function NewsArticlePage({ params }) {
 
   return (
     <article>
-      <section className="relative flex h-[55vh] min-h-[400px] items-end overflow-hidden bg-forest-deep text-paper">
-        <PlaceholderMedia tone="forest" className="absolute inset-0" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/10" />
-        <div className="relative z-10 mx-auto w-full max-w-[1000px] px-6 pb-16 md:px-10">
-          <Reveal>
-            <span className="text-[12px] uppercase tracking-[0.2em] text-gold-soft">
-              {article.category} · {formatDate(article.date)}
-            </span>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h1 className="mt-4 font-display text-[clamp(2rem,5vw,3.6rem)] leading-[1.05] tracking-tight">
-              {article.title}
-            </h1>
-          </Reveal>
-        </div>
-      </section>
+      <PageBanner
+        eyebrow={`${article.category} · ${formatDate(article.date)}`}
+        title={article.title}
+        image={article.image || undefined}
+        alt={article.imageAlt || article.title}
+        className="h-[55vh] min-h-[400px]"
+        titleClassName="text-[clamp(2rem,4.2vw,3.4rem)]"
+        narrow
+      />
 
       <section className="bg-paper px-6 py-20 md:px-10">
         <div className="mx-auto max-w-[760px]">
@@ -56,9 +50,7 @@ export default async function NewsArticlePage({ params }) {
             </Link>
           </Reveal>
           <Reveal delay={0.05}>
-            <p className="mt-10 text-[17px] leading-relaxed text-ink-soft/85">
-              {article.content}
-            </p>
+            <ArticleBody paragraphs={article.paragraphs} source={article.source} />
           </Reveal>
         </div>
       </section>

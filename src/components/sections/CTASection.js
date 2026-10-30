@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import AnimatedText from "@/components/ui/AnimatedText";
-import PlaceholderMedia from "@/components/ui/PlaceholderMedia";
+import CoverImage from "@/components/ui/CoverImage";
 
 export default function CTASection() {
   return (
@@ -15,7 +15,12 @@ export default function CTASection() {
         transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0"
       >
-        <PlaceholderMedia tone="forest" className="h-full w-full" />
+        <CoverImage
+          src="/images/speaker/address.jpg"
+          alt="Rt. Hon. Abbas Tajudeen addressing the House of Representatives."
+          className="h-full w-full"
+          sizes="100vw"
+        />
       </motion.div>
       <div className="absolute inset-0 bg-ink/60" />
 

@@ -1,9 +1,10 @@
 import { cn } from "@/lib/utils";
 
 const statusStyles = {
-  Passed: "bg-forest/10 text-forest",
-  "In Progress": "bg-gold/10 text-gold",
-  "Under Review": "bg-ink/10 text-ink-soft",
+  Assented: "bg-forest/10 text-forest",
+  Ongoing: "bg-gold/10 text-gold",
+  Proposed: "bg-ink/10 text-ink-soft",
+  Commissioned: "bg-forest/10 text-forest",
 };
 
 export default function LegislativeCard({ item }) {
